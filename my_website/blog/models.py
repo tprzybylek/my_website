@@ -23,6 +23,19 @@ class BlogIndexPage(Page):
         context['blogpages'] = blogpages
         return context
 
+    parent_page_types = ['home.HomePage']
+
+
+class BlogArchivePage(Page):
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+        blogpages = BlogPage.objects.live().order_by('-first_published_at')
+        context['blogpages'] = blogpages
+        return context
+
+    parent_page_types = ['home.HomePage']
+
 
 class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey(
@@ -30,6 +43,8 @@ class BlogPageTag(TaggedItemBase):
         related_name='tagged_items',
         on_delete=models.CASCADE
     )
+
+    parent_page_types = ['blog.BlogIndexPage']
 
 
 class BlogPage(Page):
@@ -52,6 +67,7 @@ class BlogPage(Page):
         FieldPanel('body', classname="full"),
     ]
 
+    parent_page_types = ['blog.BlogIndexPage']
 
 class BlogTagIndexPage(Page):
 
@@ -62,3 +78,5 @@ class BlogTagIndexPage(Page):
         context = super().get_context(request)
         context['blogpages'] = blogpages
         return context
+
+    parent_page_types = ['home.HomePage']
