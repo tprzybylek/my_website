@@ -31,27 +31,7 @@
         {% wagtailuserbar %}
 
         <div class="content">
-
-            {% block menubar %}
-            {% endblock %}
-            <h3>
-                <a href="{% slugurl 'blog' %}">Blog</a>
-                <small>
-                        <a href="{% slugurl 'archive' %}">Archive</a>
-                </small>
-                <small>
-                        <a href=>Tags</a>
-                </small>
-                <small>
-                        <a href="{% slugurl 'apps' %}">Apps</a>
-                </small>
-                <small>
-                        <a href="{% slugurl 'resumé' %}">About</a>
-                </small>
-                <small>
-                        <a href="{% slugurl 'contact' %}">Contact me</a>
-                </small>
-            </h3>
+            {% block menubar %}{% endblock %}
         </div>
         <div class="content">
             {% block content %}{% endblock %}
