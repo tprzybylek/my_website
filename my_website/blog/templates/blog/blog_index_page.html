@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "blog/blog.html" %}
 
 {% load wagtailcore_tags %}
 
@@ -9,9 +9,19 @@
 
     <div class="intro">{{ page.intro|richtext }}</div>
 
+    
     {% for post in blogpages %}
-        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-        {{ post.specific.intro }}
-        {{ post.specific.body|richtext }}
+    <div>
+        <section class="post">
+            <header>
+                <h3><a href="{% pageurl post %}">{{ post.title }}</a></h3>
+                <div class="date">
+                    <span class="date">{{ post.specific.date }}</span>
+                </div>
+            </header>
+            {{ post.specific.intro }}
+            {{ post.specific.body|richtext }}
+        </section>
+    </div>
     {% endfor %}
 {% endblock %}

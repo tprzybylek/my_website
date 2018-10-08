@@ -60,3 +60,9 @@ class ContactPage(AbstractEmailForm):
             FieldPanel('subject'),
         ], "Email"),
     ]
+
+    parent_page_types = ['home.HomePage']
+
+
+class ResumePage(Page):
+    parent_page_types = ['home.HomePage']

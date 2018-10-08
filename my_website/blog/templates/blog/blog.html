@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block menubar %}
+    <h3>
+        <a href="{% slugurl 'blog' %}">Blog</a>
+        <small>
+            <a href="{% slugurl 'archive' %}">Archive</a>
+        </small>
+        <small>
+            <a href="{% slugurl 'tags' %}">Tags</a>
+        </small>
+        <small>
+            <a href="{% slugurl 'resumé' %}">About</a>
+        </small>
+        <small>
+            <a href="{% slugurl 'contact' %}">Contact</a>
+        </small>
+    </h3>
+{% endblock %}
