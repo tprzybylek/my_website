@@ -1,20 +1,23 @@
 {% extends "portfolio/portfolio.html" %}
-
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
-{% block body_class %}template-appsindexpage{% endblock %}
-
-
+{% block body_class %}
+template-appsindexpage
+{% endblock %}
 
 {% block content %}
     <h1>{{ page.title }}</h1>
-
     {% for app in apps %}
     <div>
         <section class="post">
         <h2>{{ app.specific.app_name }}</h2>
-        <p>Github URL: <a href="{{ app.specific.github_url }}">{{ app.specific.github_url }}</a></p>
-        <p>App URL: <a href="{{ app.specific.app_url }}">{{ app.specific.app_url }}</a></p>
+        {% image app.specific.feed_image width-700  %}
+        <p>
+            <a class="btn-link" href="{{ app.specific.github_url }}">GitHub</a>
+            <a class="btn-link" href="{{ app.specific.app_url }}">App</a>
+            <a class="btn-link" href="{{ app.specific.presentation_url }}">Presentation</a>
+        </p>
         <p>{{ app.specific.intro }}</p>
         <p>{{ app.specific.features|richtext }}</p>
         </section>

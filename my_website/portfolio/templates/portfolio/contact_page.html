@@ -6,12 +6,18 @@
 
 {% block content %}
 
-        <h1>{{ page.title }}</h1>
-        {{ page.intro|richtext }}
-        <form action="{% pageurl page %}" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit">
-        </form>
+<h1>{{ page.title }}</h1>
+<section class="post">
+    <h2>Profiles:</h2>
+    
+</section>
+<section class="post">
+    <h2>Send me a message:</h2>
+    <form action="{% pageurl page %}" method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+</section>
 
 {% endblock %}
