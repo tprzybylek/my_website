@@ -147,10 +147,13 @@ div.item:last-of-type {
     padding-bottom: 0;
 }
 
-p {
+
+.resume-content > p {
     text-align: justify;
 }
 
+
+label:after { content: ": " }
 
 /* Headers */
 h1,
@@ -159,7 +162,10 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
 }
 
 h1 {
@@ -185,12 +191,18 @@ body {
     background: #f2f2f2;
     line-height: 1.6;
     font-size: 13px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: 'Open Sans', sans-serif;
 }
+
+img {
+    width: 100%;
+    height: auto;
+  }
 
 #resume {
     padding: 1rem 0;
-    margin: 1em auto;
+    margin-bottom: 1em;
 }
 
 #header {
@@ -200,7 +212,7 @@ body {
 
 #resume>header div {
     display: table;
-    padding-left: 0.5em;
+    /*padding-left: 0.5em;*/
 }
 
 #resume>header div.middle {
@@ -261,7 +273,7 @@ h2.section-title {
     font-size: 1rem;
     font-weight: 400;
     color: #757575;
-    padding: 1em 1rem 0;
+    /*padding: 1em 1rem 0;*/
     margin-bottom: 0.1275em;
 }
 
@@ -269,15 +281,27 @@ h2.section-title {
     margin-bottom: 1em;
 }
 
+.post-form > p > input {
+        width: 100%;
+        padding: 1em;
+        box-sizing: border-box;
+}
+
+.post-form > p > textarea {
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
 .date {
-    font-weight: 700;
+    font-weight: bold;
     color: #757575;
 }
 
 .position,
 .area,
 .institution {
-    font-weight: 700;
+    font-weight: bold;
 }
 
 #interests .item,
@@ -351,6 +375,19 @@ h2.section-title {
     border-bottom: none;
 }
 
+.btn-link {
+	display: inline-block;
+	background: #333;
+	font-size: 1em;
+	line-height: 1;
+	color: #fff;
+	padding: 0.4em 0.8em;
+	border-bottom: 1px solid #888;
+	border-right: 1px solid #888;
+    border-radius: 3px;
+    margin-top: 1em;
+}
+
 
 /* Skills chart */
 #skills .level .bar {
@@ -395,6 +432,10 @@ h2.section-title {
 /* TABLET */
 @media screen and (min-width: 602px) {
 
+    .menubar > h3 > a {
+        margin-right: 1em;
+    }
+
     .content {
         width: 550px;
         margin: 0 auto;
@@ -420,16 +461,56 @@ h2.section-title {
 /* LAPTOP */
 @media screen and (min-width: 1025px) {
 
+    .menubar > h3 > a {
+        margin-right: 1em;
+    }
+
     .content {
         width: 750px;
     }
 
     #resume {
-        
-        padding: 3em;
-        margin: 1em auto;
+        /*padding: 3em;*/
+        padding: 1em 3em 1em 3em;
+        margin-bottom: 1em;
         background: #fff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .splash-container {
+        margin-top: 3em;
+        
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+
+    .section-splash {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-justify-content: space-between;
+        text-align: justify;
+        text-justify: inter-word;
+        justify-content: space-between;
+        margin-bottom: 1em;
+        margin-top: 1em;
+        font-size: 110%
+    }
+
+    .splash-description{
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+
+        width: 37.5em;
     }
 
     .post {
@@ -467,9 +548,25 @@ h2.section-title {
         padding-top: 0;
     }
 
-    section:not(.section) {
+    section.resume-content {
         width: 37.5em;
         padding: 0 1em 1em 0;
+        margin-top: 0;
+        border: none;
+    }
+
+    /*
+    section:not(.section):not(.section-splash) {
+        width: 37.5em;
+        padding: 0 1em 1em 0;
+        margin-top: 0;
+        border: none;
+    }
+    */
+
+    section.splash {
+        width: auto;
+        padding: 1em 2em 1em 2em;
         margin-top: 0;
         border: none;
     }
@@ -513,3 +610,8 @@ h2.section-title {
     }
 
 }
+
+/*
+font-family: 'Roboto', sans-serif;
+font-family: 'Open Sans', sans-serif;
+*/
