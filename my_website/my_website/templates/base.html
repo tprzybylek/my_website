@@ -19,6 +19,9 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/my_website.css' %}">
 
@@ -30,9 +33,22 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-        <div class="content">
-            {% block menubar %}{% endblock %}
+        <div class="content menubar">
+            <h3>
+                <a href="{% slugurl 'portfolio-homepage' %}">Portfolio</a>
+                
+                <a href="{% slugurl 'resumé' %}">Resumé</a>
+                
+                <a href="{% slugurl 'apps' %}">Apps</a>
+                
+                <a href="{% slugurl 'contact' %}">Contact</a>
+                
+                <a href="{% slugurl 'blog' %}">Blog</a>
+                
+                {% block menubar %}{% endblock %}
+            </h3>
         </div>
+
         <div class="content">
             {% block content %}{% endblock %}
         </div>
