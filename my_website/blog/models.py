@@ -23,7 +23,7 @@ class BlogIndexPage(Page):
         context['blogpages'] = blogpages
         return context
 
-    parent_page_types = ['home.HomePage']
+    # parent_page_types = ['home.HomePage']
 
 
 class BlogArchivePage(Page):
@@ -34,7 +34,7 @@ class BlogArchivePage(Page):
         context['blogpages'] = blogpages
         return context
 
-    parent_page_types = ['home.HomePage']
+    # parent_page_types = ['home.HomePage']
 
 
 class BlogPageTag(TaggedItemBase):
@@ -79,4 +79,4 @@ class BlogTagIndexPage(Page):
         context['blogpages'] = blogpages
         return context
 
-    parent_page_types = ['home.HomePage']
+    # parent_page_types = ['home.HomePage']
