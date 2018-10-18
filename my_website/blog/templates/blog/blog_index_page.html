@@ -16,7 +16,9 @@
                     <span class="date">{{ post.specific.date }}</span>
                 </div>
             </header>
-            {{ post.specific.intro }}
+            <p class="intro">
+                {{ post.specific.intro }}
+            </p>
             {{ post.specific.body|richtext }}
         </section>
     </div>

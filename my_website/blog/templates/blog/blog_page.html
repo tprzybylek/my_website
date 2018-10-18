@@ -6,25 +6,31 @@
 
 {% block content %}
     <section class="post">
-        <h1>
-            {{ page.title }}
-        </h1>
-        <p class="meta">
-            {{ page.date }}
+        <header>
+            <h1>
+                    {{ page.title }}
+            </h1>
+            <div class="date">
+                    <span class="date">{{ page.date }}</span>
+            </div>
+            <div class="tags">
+                <h3>
+                    Tags:
+                </h3>
+                {% if page.tags.all.count %}
+                    {% for tag in page.tags.all %}
+                        <a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>
+                    {% endfor %}  
+                {% endif %}
+            </div>
+        </header>
+
+        <p class="intro">
+            {{ page.intro }}
         </p>
 
-        {% if page.tags.all.count %}
-        <div class="tags">
-            <h3>Tags</h3>
-            {% for tag in page.tags.all %}
-                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
-            {% endfor %}
-        </div>
-        {% endif %}
-
-        <div class="intro">{{ page.intro }}</div>
-
         {{ page.body|richtext }}
+
 
         <p><a href="{% slugurl 'blog' %}">Return to blog</a></p>
     </section>

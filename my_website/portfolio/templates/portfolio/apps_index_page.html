@@ -14,11 +14,21 @@ template-appsindexpage
         <h2>{{ app.specific.app_name }}</h2>
         {% image app.specific.feed_image width-700  %}
         <p>
-            <a class="btn-link" href="{{ app.specific.github_url }}">GitHub</a>
-            <a class="btn-link" href="{{ app.specific.app_url }}">App</a>
-            <a class="btn-link" href="{{ app.specific.presentation_url }}">Presentation</a>
+            {% if app.specific.github_url %}
+                <a class="btn-link" href="{{ app.specific.github_url }}">GitHub</a>
+            {% endif %}
+
+            {% if app.specific.app_url %}
+                <a class="btn-link" href="{{ app.specific.app_url }}">App</a>
+            {% endif %}
+
+            {% if app.specific.presentation_url %}
+                <a class="btn-link" href="{{ app.specific.presentation_url }}">Presentation</a>
+            {% endif %}
         </p>
+        <h3>About:</h3>
         <p>{{ app.specific.intro }}</p>
+        <h3>Features:</h3>
         <p>{{ app.specific.features|richtext }}</p>
         </section>
     </div>

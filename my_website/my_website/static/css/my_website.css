@@ -190,7 +190,7 @@ a:hover {
 body {
     background: #f2f2f2;
     line-height: 1.6;
-    font-size: 13px;
+    font-size: 14px;
     /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-family: 'Open Sans', sans-serif;
 }
@@ -279,6 +279,23 @@ h2.section-title {
 
 .post {
     margin-bottom: 1em;
+}
+
+.intro {
+    text-align: justify;
+}
+
+.rich-text {
+    text-align: justify;
+}
+
+.rich-text ul {
+    list-style-type: square;
+    padding-inline-start: 40px;
+}
+
+.rich-text > p {
+    margin: 1em 0;
 }
 
 .post-form > p > input {
@@ -428,6 +445,11 @@ h2.section-title {
     width: 10em;
 }
 
+.fa {
+    min-width: 1.25em;
+    margin-right: 1em;
+    text-align: center;
+}
 
 /* TABLET */
 @media screen and (min-width: 602px) {
@@ -450,9 +472,28 @@ h2.section-title {
         float: left;
     }
 
+    section>header>h1 {
+        float: left;
+    }
+
     section>header>.date {
         float: right;
         line-height: 1.3;
+    }
+
+    .profile {
+        width: 100%;
+    }
+
+    section>header>.tags {
+        width: 100%;
+        float: left;
+        line-height: 1.3;
+        margin-top: 1em;
+    }
+
+    section>header>.tags>h3 {
+        display: inline;
     }
 
 }
@@ -460,6 +501,10 @@ h2.section-title {
 
 /* LAPTOP */
 @media screen and (min-width: 1025px) {
+
+    img {
+        margin-top: 1em;
+    }
 
     .menubar > h3 > a {
         margin-right: 1em;
@@ -510,7 +555,7 @@ h2.section-title {
         background: #fff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 
-        width: 37.5em;
+        width: 34em;
     }
 
     .post {
@@ -580,6 +625,10 @@ h2.section-title {
 
     section p {
         margin: 0;
+    }
+
+    section.post > p {
+        margin: 1em 0;
     }
 
     section#basics {
