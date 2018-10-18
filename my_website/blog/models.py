@@ -2,7 +2,8 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from taggit.models import TaggedItemBase
+from taggit.models import TaggedItemBase, Tag
+
 
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
@@ -69,14 +70,22 @@ class BlogPage(Page):
 
     parent_page_types = ['blog.BlogIndexPage']
 
-class BlogTagIndexPage(Page):
 
+class BlogTagIndexPage(Page):
     def get_context(self, request):
         tag = request.GET.get('tag')
-        blogpages = BlogPage.objects.filter(tags__name=tag)
+        if tag:
+            blogpages = BlogPage.objects.filter(tags__name=tag)
 
-        context = super().get_context(request)
-        context['blogpages'] = blogpages
-        return context
+            context = super().get_context(request)
+            context['blogpages'] = blogpages
+            return context
+        else:
+            # TODO: Use taggit tag cloud - https://github.com/feuervogel/django-taggit-templatetags
+            tags = Tag.objects.all()
+
+            context = super().get_context(request)
+            context['tags'] = tags
+            return context
 
     # parent_page_types = ['home.HomePage']
