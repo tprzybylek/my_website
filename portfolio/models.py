@@ -81,9 +81,54 @@ class ContactPage(AbstractEmailForm):
     # parent_page_types = ['home.HomePage']
 
 
-class ResumePage(Page):
-    # parent_page_types = ['home.HomePage']
-    pass
-
 class PortfolioHomePage(Page):
     pass
+
+
+class Education(models.Model):
+    from_date = models.DateField()
+    to_date = models.DateField(blank=True, null=True)
+    university = models.CharField(max_length=64, blank=True, null=True)
+    city = models.CharField(max_length=64, blank=True, null=True)
+    country = models.CharField(max_length=64, blank=True, null=True)
+    field_of_study = models.CharField(max_length=64, blank=True, null=True)
+    specialization = models.CharField(max_length=64, blank=True, null=True)
+    grade = models.CharField(max_length=64, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+
+
+class Experience(models.Model):
+    from_date = models.DateField()
+    to_date = models.DateField(blank=True, null=True)
+    company = models.CharField(max_length=64, blank=True, null=True)
+    city = models.CharField(max_length=64, blank=True, null=True)
+    country = models.CharField(max_length=64, blank=True, null=True)
+    position = models.CharField(max_length=64, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+
+
+class Skill(models.Model):
+    category = models.CharField(max_length=64)
+    name = models.CharField(max_length=64)
+
+
+class Language(models.Model):
+    language = models.CharField(max_length=64)
+    level = models.CharField(max_length=16)
+
+
+class Resume(models.Model):
+    class Meta:
+        abstract = True
+
+    name = models.CharField(max_length=64, blank=True, null=True)
+    resume_title = models.CharField(max_length=64, blank=True, null=True)
+    about = models.TextField(blank=True, null=True)
+    education = models.ForeignKey(Education, on_delete=models.SET_NULL, null=True, blank=True)
+    experience = models.ForeignKey(Experience, on_delete=models.SET_NULL, null=True, blank=True)
+    skill = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True)
+    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, blank=True)
+
+
+class ResumePage(Page):
+    parent_page_types = ['home.HomePage']
