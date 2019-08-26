@@ -7,6 +7,8 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
+import json
+
 
 class AppsIndexPage(Page):
 
@@ -16,7 +18,7 @@ class AppsIndexPage(Page):
         context['apps'] = apps
         return context
 
-    # parent_page_types = ['home.HomePage']
+    parent_page_types = ['portfolio.PortfolioHomePage']
 
 
 class AppPage(Page):
@@ -78,57 +80,20 @@ class ContactPage(AbstractEmailForm):
         ], "Email"),
     ]
 
-    # parent_page_types = ['home.HomePage']
+    parent_page_types = ['portfolio.PortfolioHomePage']
 
 
 class PortfolioHomePage(Page):
-    pass
-
-
-class Education(models.Model):
-    from_date = models.DateField()
-    to_date = models.DateField(blank=True, null=True)
-    university = models.CharField(max_length=64, blank=True, null=True)
-    city = models.CharField(max_length=64, blank=True, null=True)
-    country = models.CharField(max_length=64, blank=True, null=True)
-    field_of_study = models.CharField(max_length=64, blank=True, null=True)
-    specialization = models.CharField(max_length=64, blank=True, null=True)
-    grade = models.CharField(max_length=64, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-
-
-class Experience(models.Model):
-    from_date = models.DateField()
-    to_date = models.DateField(blank=True, null=True)
-    company = models.CharField(max_length=64, blank=True, null=True)
-    city = models.CharField(max_length=64, blank=True, null=True)
-    country = models.CharField(max_length=64, blank=True, null=True)
-    position = models.CharField(max_length=64, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-
-
-class Skill(models.Model):
-    category = models.CharField(max_length=64)
-    name = models.CharField(max_length=64)
-
-
-class Language(models.Model):
-    language = models.CharField(max_length=64)
-    level = models.CharField(max_length=16)
-
-
-class Resume(models.Model):
-    class Meta:
-        abstract = True
-
-    name = models.CharField(max_length=64, blank=True, null=True)
-    resume_title = models.CharField(max_length=64, blank=True, null=True)
-    about = models.TextField(blank=True, null=True)
-    education = models.ForeignKey(Education, on_delete=models.SET_NULL, null=True, blank=True)
-    experience = models.ForeignKey(Experience, on_delete=models.SET_NULL, null=True, blank=True)
-    skill = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True)
-    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, blank=True)
+    parent_page_types = ['wagtailcore.Page']
 
 
 class ResumePage(Page):
-    parent_page_types = ['home.HomePage']
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['cv'] = json.loads(self.cv)
+        return context
+
+    cv = models.TextField(blank=True)
+    content_panels = Page.content_panels + [FieldPanel('cv'), ]
+
+    parent_page_types = ['portfolio.PortfolioHomePage']

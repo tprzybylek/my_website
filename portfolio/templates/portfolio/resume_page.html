@@ -11,261 +11,202 @@
     <div id="resume">
         <header>
             <div>
-                <h1>Tomasz Przybyłek</h1>
-                <h2>Full Stack Developer</h2>
+                <h1>{{ cv.basics.name }}</h1>
+                <h2>{{ cv.basics.label }}</h2>
             </div>
         </header>
-        <section class="section">
-            <h2 class="section-title">About</h2>
-            <section class="resume-content">
-                <p>
-                    An open-minded young professional with experience in web applications development with Django and Node.js. 
-                    Strong skills in data processing with Python and database design thanks to the background in geoinformatics. 
-                    Looking for possibilities to further develop my skills in the web development field. 
-                </p>
+        {% if cv.basics.summary %}
+            <section class="section">
+                <h2 class="section-title">Profile</h2>
+                <section class="resume-content">
+                    <p>
+                        {{ cv.basics.summary }}
+                    </p>
+                </section>
             </section>
-        </section>
-        <section class="section">
-            <h2 class="section-title">Education</h2>
-            <section id="education" class="resume-content">
-
-                <header>
-                    <h3 class="institution">
-                        Wroclaw University of Science and Technology
-                    </h3>
-                    <div class="date">
-                        <span class="startDate">
-                            03.2016
-                        </span>
-                        <span class="endDate">
-                            - 09.2018
-                        </span>
-                    </div>
-                </header>
-                <div class="item">
-                        <div class="studyType">
-                            M.Eng
-                        </div>
-                        <div class="area">
-                            Geoinformatics
-                        </div>
-                </div>
-
-                <header>
-                    <h3 class="institution">
-                        Dresden University of Applied Sciences
-                    </h3>
-                    <div class="date">
-                        <span class="startDate">
-                            10.2016
-                        </span>
-                        <span class="endDate">
-                            - 07.2017
-                        </span>
-                    </div>
-                </header>
-                <div class="item">
-                    <div class="studyType">
-                        Erasmus+ programme during the masters studies 
-                    </div>
-                    <div class="area">
-                        Geoinformatics
-                    </div>
-                </div>
-                
-                <header>
-                    <h3 class="institution">
-                        Wroclaw University of Science and Technology
-                    </h3>
-                    <div class="date">
-                        <span class="startDate">
-                            10.2012
-                        </span>
-                        <span class="endDate">
-                            - 01.2016
-                        </span>
-                    </div>
-                </header>
-                <div class="item">
-                    <div class="studyType">
-                        B.Eng
-                    </div>
-                    <div class="area">
-                        Geodesy and Cartography
-                    </div>
-                </div>
-            </section>
-        </section>
-        <section class="section">
-            <h2 class="section-title">Experience</h2>
-            <section id="work" class="resume-content">
-                <header>
+        {% endif %}
+        {% if cv.work %}
+            <section class="section">
+                <h2 class="section-title">Work Experience</h2>
+                <section id="work" class="resume-content">
+                    {% for workplace in cv.work %}
+                    <header>
                         <h3 class="name">
-                            Wroclaw University of Science and Technology
+                            {{ workplace.name }}
                         </h3>
                         <div class="date">
                             <span class="startDate">
-                                08.2017
+                                {{ workplace.startDate }}
                             </span>
+                            -
                             <span class="endDate">
-                                - 10.2017
+                                {% if workplace.endDate %}
+                                    {{ workplace.endDate }}
+                                {% else %}
+                                    Present
+                                {% endif %}
                             </span>
                         </div>
-                </header>
-                <div class="item">
-                    <div class="position">
-                        Computer Sciencist
-                    </div>
-                    <div class="summary">
-                        <p>AZON ia a web portal developed by prestigious universities of Wroclaw
-                            for storing and publishing open scientific data.</p>
-                    </div>
-                    <ul class="highlights">
-                        <li>Developed Python scripts to retrieve and clip satellite imagery using the GDAL library.</li>
-                        <li>Developed a Node.js app to clip satellite imagery to the user's area of interest.</li>
-                        <li>Adjusted the UI to the app's new features using leaflet.js and jQuery</li>
-                    </ul>
-                </div>
-            </section>
-        </section>
-        <section class="section">
-                <h2 class='section-title'>Skills</h2>
-                <section id="skills" class="resume-content">
+                    </header>
                     <div class="item">
-                        <div class="name">
-                            Back-end
-                        </div>
-                        <!--
-                            <div class="level advanced">
-                            <em>Advanced</em>
-                            <div class="bar"></div>
-                        </div>
-                        -->
-                        <ul class="keywords">
-                            <li>Django</li>
-                            <li>Celery</li>
-                            <li>Wagtail</li>
-                            <li>node.js</li>
-                            <li>express.js</li>
-                            
-                        </ul>
+                            <div class="position">
+                                {{ workplace.position }}
+                            </div>
+                            <div class="summary">
+                                {{ workplace.summary }}
+                            </div>
+                            <ul class="highlights">
+                                {% for highlight in workplace.highlights %}
+                                    <li>{{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
                     </div>
-                    <div class="item">
-                        <div class="name">
-                            Front-end
-                        </div>
-                        <!--
-                        <div class="level intermediate">
-                            <em>Intermediate</em>
-                            <div class="bar"></div>
-                        </div>
-                        -->
-                        <ul class="keywords">
-                            <li>jQuery</li>
-                            <li>leaflet.js</li>
-                            <li>D3.js</li>
-                        </ul>
-                    </div>
-                    <div class="item">
-                        <div class="name">
-                            Python
-                        </div>
-                       <!-- 
-                        <div class="level advanced">
-                            <em>Advanced</em>
-                            <div class="bar"></div>
-                        </div>
-                        -->
-                        <ul class="keywords">
-                            <li>GDAL</li>
-                            <li>NumPy</li>
-                            <li>Spatial Analysis</li>
-                            <li>Data Visualization</li>
-                        </ul>
-                    </div>
-                    <div class="item">
-                        <div class="name">
-                            Databases
-                        </div>
-                        <!--
-                        <div class="level advanced">
-                            <em>Advanced</em>
-                            <div class="bar"></div>
-                        </div>-->
-                        <ul class="keywords">
-                            <li>PostgreSQL</li>
-                            <li>PostGIS</li>
-                            <li>MongoDB</li>
-                            <li>RabbitMQ</li>
-                        </ul>
-                    </div>
-                    <div class="item">
-                        <div class="name">
-                            General
-                        </div>
-                        <!--
-                        <div class="level beginner">
-                            <em>Beginner</em>
-                            <div class="bar"></div>
-                        </div>
-                        -->
-                        <ul class="keywords">
-                            <li>Git</li>
-                            <li>GitHub</li>
-                            <li>Ubuntu</li>
-                        </ul>
-                    </div>
+                    {% endfor %}
                 </section>
-        </section>
-
-        <section class="section">
-            <h2 class='section-title'>Languages</h2>
-            <section id="languages" class="resume-content">
-                <div class="item">
-                    <div class="language">
-                        Polish
-                    </div>
-                    <div class="fluency">
-                        <em>Native speaker</em>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="language">
-                        German
-                    </div>
-                    <div class="fluency">
-                        <em>C1</em>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="language">
-                        English
-                    </div>
-                    <div class="fluency">
-                        <em>B2</em>
-                    </div>
-                </div>
             </section>
-        </section>
-        <section class="section">
-            <h2 class='section-title'>Interests</h2>
-            <section id="interests" class="resume-content">
-                <div class="item">
-                    <div class="name">
-                        Cycling
+        {% endif %}
+        {% if cv.education %}
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <section id="education" class="resume-content">
+                    {% for edu in cv.education %}
+                    <header>
+                        <h3 class="institution">
+                            {{ edu.institution }}
+                        </h3>
+                        <div class="date">
+                            <span class="startDate">
+                                {{ edu.startDate }}
+                            </span>
+                            -
+                            <span class="endDate">
+                                {% if edu.endDate %}
+                                    {{ edu.endDate }}
+                                {% else %}
+                                    Present
+                                {% endif %}
+                            </span>
+                        </div>
+                    </header>
+                    <div class="item">
+                            <div class="studyType">
+                                {{ edu.studyType }}
+                            </div>
+                            <div class="area">
+                                {% if edu.area %}
+                                    Field of study: {{ edu.area }}
+                                {% endif %}
+                                {% if edu.specialisation %}
+                                    , Specialisation: {{ edu.specialisation }}
+                                {% endif %}
+                            </div>
+                            {% if edu.description %}
+                                <div class="summary">
+                                    {{ edu.description }}
+                                </div>
+                            {% endif %}
                     </div>
-                </div>
-                <div class="item">
-                    <div class="name">
-                        Landscape photography
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name">
-                        Hiking
-                    </div>
-                </div>
+                    {% endfor %}
+                </section>
             </section>
-        </section>
+        {% endif %}
+        {% if cv.volunteer %}
+            <section class="section">
+                <h2 class="section-title">Volunteering</h2>
+                <section id="work" class="resume-content">
+                    {% for volunteer in cv.volunteer %}
+                    <header>
+                        <h3 class="name">
+                            {{ volunteer.organization }}
+                        </h3>
+                        <div class="date">
+                            <span class="startDate">
+                                {{ volunteer.startDate }}
+                            </span>
+                            -
+                            <span class="endDate">
+                                {% if volunteer.endDate %}
+                                    {{ volunteer.endDate }}
+                                {% else %}
+                                    Present
+                                {% endif %}
+                            </span>
+                        </div>
+                    </header>
+                    <div class="item">
+                            <div class="position">
+                                {{ volunteer.position }}
+                            </div>
+                            <div class="summary">
+                                {{ volunteer.summary }}
+                            </div>
+                            <ul class="highlights">
+                                {% for highlight in volunteer.highlights %}
+                                    <li>{{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                    {% endfor %}
+                </section>
+            </section>
+        {% endif %}
+        {% if cv.skills %}
+            <section class="section">
+                    <h2 class='section-title'>Skills</h2>
+                    <section id="skills" class="resume-content">
+                        {% for skill in cv.skills %}
+                            <div class="item">
+                                <div class="name">
+                                    {{ skill.name }}
+                                </div>
+                                <ul class="keywords">
+                                    {% for keyword in skill.keywords %}
+                                        <li>{{ keyword }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </section>
+            </section>
+        {% endif %}
+        {% if cv.languages %}
+        <section class="section">
+                <h2 class='section-title'>Languages</h2>
+                <section id="languages" class="resume-content">
+                    {% for language in cv.languages %}
+                        <div class="item">
+                            <div class="language">
+                                {{ language.language }}
+                            </div>
+                            <div class="fluency">
+                                <em>{{ language.fluency }}</em>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </section>
+            </section>
+        {% endif %}
+        {% if cv.interests %}
+        <section class="section">
+                <h2 class='section-title'>Interests</h2>
+                <section id="languages" class="resume-content">
+                    {% for interest in cv.interests %}
+                        <div class="item">
+                            <div class="name">
+                                {{ interest }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </section>
+            </section>
+        {% endif %}
     </div>
+
+
+
+
+
+
+
+    
 {% endblock %}

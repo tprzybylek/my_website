@@ -111,7 +111,8 @@ body {
 
 ol,
 ul {
-    list-style: none;
+    list-style: disc inside;
+    text-align: justify;
 }
 
 .main-summary p,
@@ -149,6 +150,10 @@ div.item:last-of-type {
 
 
 .resume-content > p {
+    text-align: justify;
+}
+
+.summary {
     text-align: justify;
 }
 

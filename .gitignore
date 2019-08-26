@@ -1,8 +1,10 @@
-*.pyc
-*.sqlite3
-
 .idea/
 .vscode/
 
 venv/
 __pycache__/
+migrations/
+media/
+
+*.pyc
+*.sqlite3

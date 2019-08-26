@@ -14,10 +14,6 @@
         <span><a href="https://www.linkedin.com/in/tomasz-przybyłek-91b3019a">LinkedIn</a></span>
     </div>
     <div class="profile">
-        <span class="fa"><i class="fab fa-xing"></i></span>
-        <span><a href="https://www.xing.com/profile/Tomasz_Przybylek/cv">XING</a></span>
-    </div>
-    <div class="profile">
         <span class="fa"><i class="fab fa-github"></i></span>
         <span><a href="https://github.com/tprzybylek">GitHub</a></span>
     </div>
@@ -31,7 +27,7 @@
     <form action="{% pageurl page %}" method="POST" class="post-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit">
+        <input type="submit" value="Send a Message">
     </form>
 </section>
 
