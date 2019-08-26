@@ -1,6 +1,6 @@
 # my_website
 
-This is my personal website built with Wagtail. Wagtail is a Python CMS.
+This is my personal website built with Wagtail. Wagtail is a Python CMS. Live demo is to be seen here: [http://tprzybylek.me/](http://tprzybylek.me/)
 
 ## Installation
 
